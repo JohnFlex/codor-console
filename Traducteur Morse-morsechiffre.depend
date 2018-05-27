@@ -1,0 +1,25 @@
+# depslib dependency file v1.0
+1513782127 source:c:\users\coca life\documents\trad\traducteur morse-morsechiffre\main.cpp
+	<iostream>
+	<string>
+	<stdio.h>
+	<time.h>
+	<stdlib.h>
+
+1514017978 source:e:\traducteur morse-morsechiffre\main.cpp
+	<iostream>
+	<string>
+	<stdio.h>
+	<time.h>
+	<stdlib.h>
+
+1515515780 source:c:\users\coca-zero\desktop\key\traducteur morse-morsechiffre\main.cpp
+	<iostream>
+	<string>
+	<stdio.h>
+	<time.h>
+	<stdlib.h>
+	<cstdlib>
+	<chrono>
+	<thread>
+
