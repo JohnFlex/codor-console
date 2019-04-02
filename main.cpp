@@ -12,236 +12,293 @@ using namespace std;
 
 string chiffrage(string chaindentr)
 {
-    string chainEntree(chaindentr);
-    string chainSortie("");
-    string const chPer("02468");
-    string const chImp("13579");
-    int longeurChaine(1);
-    int compteur(0);
-    longeurChaine =chainEntree.size();
-    int randomeur(0);
-    char temporiseur(' ');
-    char secRandomeur(' ');
-    for (compteur = 0 ; compteur < longeurChaine ; compteur++)
+    //BUT : Chiffer une chaine de caractères
+    //ENTREE : Chaine de caractères en morse
+    //SORTIE : Chaine de caractères chiffrée
+
+    //Initialisation des variables
+    string chainEntree(chaindentr), chainSortie("");
+    string const chiffresPairs("02468");
+    string const chiffresImpairs("13579");
+    int longeurChaine(chainEntree.size()), randomeur(0);
+    char temporiseur(' '), secRandomeur(' ');
+
+    //Debut de l'encodage
+    for (int compteur = 0 ; compteur < chainEntree.size() ; compteur++)
     {
-        //cout << compteur << " : Test" << endl;
+        //Selection de la lettre du compteur
         temporiseur = chainEntree[compteur];
-        //cout << temporiseur << endl;
+        //Sélection du chiffre;;
         randomeur= rand()% 5;
+        //Selection du chiffre en fonction de pair ou impair, sinon on recopie la lettre
         if(temporiseur=='.')
-            secRandomeur = chPer[randomeur];
+            secRandomeur = chiffresPairs[randomeur];
         else if(temporiseur=='-')
-            secRandomeur = chImp[randomeur];
+            secRandomeur = chiffresImpairs[randomeur];
         else
             secRandomeur = temporiseur;
+        //Rajout du chiffre a la chaine
         chainSortie = chainSortie+secRandomeur;
     }
+    //Information sur la fin
     cout << "Chiffrage termine" << endl;
+
     return chainSortie;
 }
 
 string aMORSage(string message)
 {
-    char lae(' ');
-    int tailleChaine(message.size()), i(0);
-    string chaineaMorsee(" "), lame(" ");
-    for (i = 0; i < tailleChaine ; i++)
+    //BUT : Encoder un message normal en morse
+    //ENTREE : Phrase (String)
+    //SORTIE : Message en morse (String)
+
+    //Initialisation des variables
+    char lettreDuMessage(' ');
+    string chaineaMorsee(" "), lettreTraduite(" ");
+
+    //Traduction de la lettre
+    for (int i = 0; i < message.size() ; i++)
     {
-        lae=message[i];
-        if(lae=='a')
-            lame=".-";
-        else if(lae=='b')
-            lame="-...";
-        else if(lae=='c')
-            lame="-.-.";
-        else if(lae=='d')
-            lame="-..";
-        else if(lae=='e')
-            lame=".";
-        else if(lae=='f')
-            lame="..-.";
-        else if(lae=='g')
-            lame="--.";
-        else if(lae=='h')
-            lame="....";
-        else if(lae=='i')
-            lame="..";
-        else if(lae=='j')
-            lame=".---";
-        else if(lae=='k')
-            lame="-.-";
-        else if(lae=='l')
-            lame=".-..";
-        else if(lae=='m')
-            lame="--";
-        else if(lae=='n')
-            lame="-.";
-        else if(lae=='o')
-            lame="---";
-        else if(lae=='p')
-            lame=".--.";
-        else if(lae=='q')
-            lame="--.-";
-        else if(lae=='r')
-            lame=".-.";
-        else if(lae=='s')
-            lame="...";
-        else if(lae=='t')
-            lame="-";
-        else if(lae=='u')
-            lame="..-";
-        else if(lae=='v')
-            lame="...-";
-        else if(lae=='w')
-            lame=".--";
-        else if(lae=='x')
-            lame="-..-";
-        else if(lae=='y')
-            lame="-.--";
-        else if(lae=='z')
-            lame="--..";
-        else if(lae==' ')
-            lame="/";
+        lettreDuMessage=message[i];
+        if(lettreDuMessage=='a')
+            lettreTraduite=".-";
+        else if(lettreDuMessage=='b')
+            lettreTraduite="-...";
+        else if(lettreDuMessage=='c')
+            lettreTraduite="-.-.";
+        else if(lettreDuMessage=='d')
+            lettreTraduite="-..";
+        else if(lettreDuMessage=='e')
+            lettreTraduite=".";
+        else if(lettreDuMessage=='f')
+            lettreTraduite="..-.";
+        else if(lettreDuMessage=='g')
+            lettreTraduite="--.";
+        else if(lettreDuMessage=='h')
+            lettreTraduite="....";
+        else if(lettreDuMessage=='i')
+            lettreTraduite="..";
+        else if(lettreDuMessage=='j')
+            lettreTraduite=".---";
+        else if(lettreDuMessage=='k')
+            lettreTraduite="-.-";
+        else if(lettreDuMessage=='l')
+            lettreTraduite=".-..";
+        else if(lettreDuMessage=='m')
+            lettreTraduite="--";
+        else if(lettreDuMessage=='n')
+            lettreTraduite="-.";
+        else if(lettreDuMessage=='o')
+            lettreTraduite="---";
+        else if(lettreDuMessage=='p')
+            lettreTraduite=".--.";
+        else if(lettreDuMessage=='q')
+            lettreTraduite="--.-";
+        else if(lettreDuMessage=='r')
+            lettreTraduite=".-.";
+        else if(lettreDuMessage=='s')
+            lettreTraduite="...";
+        else if(lettreDuMessage=='t')
+            lettreTraduite="-";
+        else if(lettreDuMessage=='u')
+            lettreTraduite="..-";
+        else if(lettreDuMessage=='v')
+            lettreTraduite="...-";
+        else if(lettreDuMessage=='w')
+            lettreTraduite=".--";
+        else if(lettreDuMessage=='x')
+            lettreTraduite="-..-";
+        else if(lettreDuMessage=='y')
+            lettreTraduite="-.--";
+        else if(lettreDuMessage=='z')
+            lettreTraduite="--..";
+        else if(lettreDuMessage==' ')
+            lettreTraduite="/";
         else
-            lame=lae;
-        chaineaMorsee = chaineaMorsee+ lame+ ' ';
+            lettreTraduite=lettreDuMessage;
+        //Ajout de la lettre traduite au message
+        chaineaMorsee = chaineaMorsee+ lettreTraduite+ ' ';
     }
+
+    //Information de la fin du message
     cout << "aMORSage termine" << endl;
+    //Ajout du / de fin
     chaineaMorsee = chaineaMorsee + "/";
     return chaineaMorsee;
 }
 
+
+
 string decodage(string message)
 {
-    char deTraducteur(' ');
-    int longueurMessage(message.size()), i(0);
+    //BUT : Traduire un string des chiffres en morse
+    //ENTREE : String de chiffres
+    //SORTIE : String en morse
+
+    //Initialisationd de variables
+    char chiffre(' ');
     string messageDecode(" ");
-    for(i=0; i<longueurMessage; i++)
+
+    //Decodage de chaque lettre
+    for(int i=0; i<message.size(); i++)
     {
-        deTraducteur=message[i];
-        if (deTraducteur=='1'||deTraducteur=='3'||deTraducteur=='5'||deTraducteur=='7'||deTraducteur=='9')
+        //Recuperation de la lettre
+        chiffre=message[i];
+
+        //Transformation du chiffre en morse
+        if (chiffre=='1'||chiffre=='3'||chiffre=='5'||chiffre=='7'||chiffre=='9')
         {
             messageDecode = messageDecode+'-';
         }
-        else if (deTraducteur=='0'||deTraducteur=='2'||deTraducteur=='4'||deTraducteur=='6'||deTraducteur=='8')
+        else if (chiffre=='0'||chiffre=='2'||chiffre=='4'||chiffre=='6'||chiffre=='8')
         {
             messageDecode = messageDecode+'.';
         }
         else
         {
-            messageDecode = messageDecode+deTraducteur;
+            messageDecode = messageDecode+chiffre;
         }
     }
+    //Information de la fin
     cout << "Message Decode" << endl;
     return messageDecode;
 }
 
 string traduction(string message)
 {
-    string finale("");
-    char TAM(' ');
-    int longueur(message.size());
-    int compt(0);
-    char extracteur(' ');
-    string moyenne("e");
-    for(compt=0;(compt<longueur);compt++)
+    //BUT : Traduire du morse en français
+    //ENTREE : String en morse
+    //SORTIE : String en humain
+
+    //Initialisation des variables
+    string messageARenvoyer(""), strIndermediaire("");
+    char lettreTraduite(' '), extracteur(' ');
+
+    //Extraction du message
+    for(int compt=0;(compt<message.size());compt++)
     {
+        //Recuperation du caractere en cours
         extracteur = message[compt];
+
+        //Ajout du caractere suivant si =/= d'espace, sinon traduction de ce qui a
+        //ete recupere
         if (extracteur!=' ') {
-            moyenne = moyenne+extracteur;
+            strIndermediaire = strIndermediaire+extracteur;
         } else {
 
-            if(moyenne==".-")
-                TAM ='A';
-            else if(moyenne=="-...")
-                TAM ='B';
-            else if(moyenne=="-.-.")
-                TAM ='C';
-            else if(moyenne=="-..")
-                TAM ='D';
-            else if(moyenne==".")
-                TAM ='E';
-            else if(moyenne=="..-.")
-                TAM ='F';
-            else if(moyenne=="--.")
-                TAM ='G';
-            else if(moyenne=="....")
-                TAM ='H';
-            else if(moyenne=="..")
-                TAM ='I';
-            else if(moyenne==".---")
-                TAM ='J';
-            else if(moyenne=="-.-")
-                TAM ='K';
-            else if(moyenne==".-..")
-                TAM ='L';
-            else if(moyenne=="--")
-                TAM ='M';
-            else if(moyenne=="-.")
-                TAM ='N';
-            else if(moyenne=="---")
-                TAM ='O';
-            else if(moyenne==".--.")
-                TAM ='P';
-            else if(moyenne=="--.-")
-                TAM ='Q';
-            else if(moyenne==".-.")
-                TAM ='R';
-            else if(moyenne=="...")
-                TAM ='S';
-            else if(moyenne=="-")
-                TAM ='T';
-            else if(moyenne=="..-")
-                TAM ='U';
-            else if(moyenne=="...-")
-                TAM ='V';
-            else if(moyenne==".--")
-                TAM ='W';
-            else if(moyenne=="-..-")
-                TAM ='X';
-            else if(moyenne=="-.--")
-                TAM ='Y';
-            else if(moyenne=="--..")
-                TAM ='Z';
-            else if(moyenne=="/")
-                TAM =' ';
+            if(strIndermediaire==".-")
+                lettreTraduite ='A';
+            else if(strIndermediaire=="-...")
+                lettreTraduite ='B';
+            else if(strIndermediaire=="-.-.")
+                lettreTraduite ='C';
+            else if(strIndermediaire=="-..")
+                lettreTraduite ='D';
+            else if(strIndermediaire==".")
+                lettreTraduite ='E';
+            else if(strIndermediaire=="..-.")
+                lettreTraduite ='F';
+            else if(strIndermediaire=="--.")
+                lettreTraduite ='G';
+            else if(strIndermediaire=="....")
+                lettreTraduite ='H';
+            else if(strIndermediaire=="..")
+                lettreTraduite ='I';
+            else if(strIndermediaire==".---")
+                lettreTraduite ='J';
+            else if(strIndermediaire=="-.-")
+                lettreTraduite ='K';
+            else if(strIndermediaire==".-..")
+                lettreTraduite ='L';
+            else if(strIndermediaire=="--")
+                lettreTraduite ='M';
+            else if(strIndermediaire=="-.")
+                lettreTraduite ='N';
+            else if(strIndermediaire=="---")
+                lettreTraduite ='O';
+            else if(strIndermediaire==".--.")
+                lettreTraduite ='P';
+            else if(strIndermediaire=="--.-")
+                lettreTraduite ='Q';
+            else if(strIndermediaire==".-.")
+                lettreTraduite ='R';
+            else if(strIndermediaire=="...")
+                lettreTraduite ='S';
+            else if(strIndermediaire=="-")
+                lettreTraduite ='T';
+            else if(strIndermediaire=="..-")
+                lettreTraduite ='U';
+            else if(strIndermediaire=="...-")
+                lettreTraduite ='V';
+            else if(strIndermediaire==".--")
+                lettreTraduite ='W';
+            else if(strIndermediaire=="-..-")
+                lettreTraduite ='X';
+            else if(strIndermediaire=="-.--")
+                lettreTraduite ='Y';
+            else if(strIndermediaire=="--..")
+                lettreTraduite ='Z';
+            else if(strIndermediaire=="/")
+                lettreTraduite =' ';
 
-            finale=finale+TAM;
-            moyenne = "";
+            //Ajout de ce qui a ete recupere
+            messageARenvoyer=messageARenvoyer+lettreTraduite;
+
+            //Reinitialisation du truc intermediaire
+            strIndermediaire = "";
         }
-
     }
-    return finale;
+    return messageARenvoyer;
 }
 
 int init(int zero)
 {
-    string message("");
     srand(time(NULL));
-    int deco(1);
-    cout << "Choisissez la fonction" << endl << "1 : Encodage" << endl << "2 : Decodage" << endl << "3 : Fermer le programme" << endl;
-    cin >> deco;
-    if  (deco!=3)
+    //Initialisation des variables
+    string message("");
+    int recupMenu(0);
+
+    //Afficher Menu
+    cout << "Choisissez la fonction" << endl << "1 : Encodage" << endl << "2 : Decodage" << endl << "3 : Effacer l'ecran" << endl << "4 : Fermer le programme" << endl;
+
+    //Recuperation de la valeur du menu
+    cin >> recupMenu;
+
+    //Recuperation du message si on ne ferme pas
+    if  (recupMenu==1||recupMenu==2)
     {
         cout << "Entrez votre message" << endl;
         cin.ignore();
         getline(cin, message);
         cout << "Message de base : " << message << endl;
     }
-    if (deco==1)
+
+    //Traduction en morse
+    if (recupMenu==1)
     {
         string messageaMORSe(aMORSage(message));
         string messagechiffre(chiffrage(messageaMORSe));
         cout << "Resultat traduit :" <<endl<< "DEBUT" <<endl<<endl << messagechiffre << endl <<endl<<"FIN" <<endl;
         init(0);
     }
-    else if (deco==2)
+
+    //Traduction en français
+    else if (recupMenu==2)
     {
         string messageCode(decodage(message));
         string messageTraduit(traduction(messageCode));
         cout << "Resultat traduit : DEBUT " << endl << endl<< messageTraduit << endl<<endl<<" FIN" <<endl;
         init(0);
     }
+
+    //Effacer l'ecran
+    else if (recupMenu==3)
+    {
+        system("cls");
+        init(0);
+    }
+
+    //Quitter le programme
     else
     {
         cout << "Fermeture du programme..." << endl ;
